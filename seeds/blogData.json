@@ -2,19 +2,16 @@
   {
     "title": "Tech",
     "content": "This is my first blog about tech ",
-    "date": "03-15-2023",
     "is_complete": false
   },
   {
     "title": "Tech1",
     "content": "This is my first blog about tech 111",
-    "date": "03-15-2023",
     "is_complete": false
   },
   {
     "title": "Tech2",
     "content": "This is my first blog about tech 222",
-    "date": "03-15-2023",
     "is_complete": false
   }
 ]

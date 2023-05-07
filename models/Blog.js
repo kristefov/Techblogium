@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Blog extends Model {}
 
@@ -19,13 +19,10 @@ Blog.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    comment: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     date: {
       type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     is_complete: {
       type: DataTypes.BOOLEAN,
@@ -43,5 +40,5 @@ Blog.init(
     freezeTableName: true,
     modelName: "blog",
   }
-);
-module.exports = Blog
+)
+module.exports = Blog;
