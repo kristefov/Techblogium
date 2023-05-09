@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Blog, Comment } = require('../models');
+const { User, Blog } = require('../models');
 const withAuth = require('../utils/withAuth');
 
 router.get('/', withAuth, async (req, res) => {
@@ -16,14 +16,14 @@ router.get('/', withAuth, async (req, res) => {
             ]
         });
         const blogs = blogData.map((blog) => blog.get({ plain: true }));
-        req.render("homepage", {
+        res.render("homepage", {
             blogs,
             logged_in: req.session.logged_in,
         }) 
     } catch (error) {
         res.status(500).json(error);
 
-    }}
+    }})
 
 
     router.get('/login', async (req, res) => {
@@ -40,6 +40,14 @@ router.get('/', withAuth, async (req, res) => {
             return;
         }
         res.render('register');
+    })
+
+    router.get('/home', async (req, res) => {
+        if (req.session.logged_in) {
+            res.redirect("/");
+            return;
+        }
+        res.render('homepage');
     })
 
     module.exports = router;
