@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { Model } = require("sequelize");
 const { Blog } = require("../../models");
 const withAuth = require("../../utils/withAuth");
 
@@ -34,17 +35,39 @@ router.delete("/:id", withAuth, async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const blogData = await Blog.findAll({
-      include: [
-        {
-          model: Comment,
-          attributes: ["content"],
-        },
-        {
-          model: User,
-          attributes: ["first_name", "last_name"],
-        },
-      ],
+    const blogData = await Blog.findAll(
+      // {
+      //   include: [
+      //     {
+      //       model: User,
+      //       attributes: ["first_name", "last_name"],
+      //     },
+      //     {
+      //       model: Comment,
+      //       attributes: ["id","content","user_id"],
+      //       include: {
+      //         model: User,
+      //         attributes: ["first_name", "last_name"],
+      //       },
+      //     },
+          
+      //   ],
+      // }
+    );
+    res.status(200).json(blogData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
+router.get("/:id", async (req, res) => {
+  try {
+    const blogData = await Blog.findOne({
+      where: {
+              id: req.params.id,
+            }
     });
     res.status(200).json(blogData);
   } catch (err) {
