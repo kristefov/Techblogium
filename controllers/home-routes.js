@@ -34,6 +34,16 @@ router.get("/login", async (req, res) => {
   }
   res.render("login");
 });
+router.get("/newblog", async (req, res) => {
+  if (req.session.logged_in) {
+    res.render("newblog", {
+      user: req.session.user,
+      logged_in: req.session.logged_in,
+    });
+    return;
+  }
+  res.render("login");
+});
 
 router.get("/signup", async (req, res) => {
   if (req.session.logged_in) {

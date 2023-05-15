@@ -1,4 +1,4 @@
-<nav class="navbar text-bg-light shadow-lg p-3 mb-1 bg-body-tertiary rounded navbar-expand-lg bg-body-tertiary">
+<nav class="navbar text-bg-light shadow-lg p-3 mb-2 bg-body-tertiary rounded navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand text-center fw-bold " href="#">Tech-Blog</a>
         {{#if logged_in}} 
@@ -13,22 +13,22 @@
                 <li class="nav-item">
                     <a class="nav-link" type="submit" id="logout">Log out</a>
                 </li>
+                <li class="nav-item mx-4">
+                    <a class="nav-link text-light btn btn-primary btn-sm" type="submit"  href="/newblog">New Blog</a>
+                </li>
             </ul>
-            <div>
-                <button type="button" class="btn btn-primary btn-sm">New Blog</button>
-            </div>
         </div>
         {{else}}
          <div class="collapse m-1 navbar-collapse d-flex flex-row-reverse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/homepage">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/login">Log In</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign Up</a>
+          <a class="nav-link" href="/signup">Sign Up</a>
         </li>
         </li>
       </ul>
