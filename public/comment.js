@@ -1,10 +1,16 @@
+const openBlogHandler = async (event) => {
+
+}
+
+
+
 const commentHandler = async (event) => {
     console.log('comment handler')
     event.preventDefault();
 
     
 
-    const blog_id = document.querySelector('.blog-id').dataset.id;
+    const blog_id = document.querySelector('.blogid').dataset.id;
     const content = document.querySelector('#comment-content').value;
     console.log(blog_id)
     
