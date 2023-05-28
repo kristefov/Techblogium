@@ -11,10 +11,16 @@ const blogHandler = async (event) => {
         headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-        document.location.reload();
+        window.location.replace('/dashboard')
     } else {
         alert(response.statusText);
     }
 }
 
-document.getElementById('new-blog-btn').addEventListener('click', blogHandler);
+const elementBlog = document.getElementById('new-blog-btn')
+if(elementBlog){elementBlog.addEventListener('click', blogHandler)}
+
+// const editBlogHandler = async (event) => {
+//    const openBlog = doc 
+// }
+// const blog_id = document.querySelector('.blogid').dataset.id;

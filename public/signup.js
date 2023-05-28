@@ -19,4 +19,6 @@ const signupHandler = async (event) => {
     }
 }
 
-document.getElementById('register').addEventListener('click', signupHandler);
+
+const elementRegister = document.getElementById('register')
+if(elementRegister){elementRegister.addEventListener('click', signupHandler);}

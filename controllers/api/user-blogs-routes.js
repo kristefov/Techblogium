@@ -5,22 +5,12 @@ const withAuth = require("../../utils/withAuth");
 
 router.get("/", async (req, res) => {
   try {
-    const blogData = await Blog.findAll(
-    );
-    res.status(200).json(blogData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-
-
-router.get("/:id", async (req, res) => {
-  try {
-    const blogData = await Blog.findOne({
-      where: {
-              id: req.params.id,
-            }
+    const blogData = await Blog.findAll({
+      attributes: ["id", "title", "content", "date"],
+      order: [["date", "ASC"]],
+      include: {
+        model: Comment
+      }
     });
     res.status(200).json(blogData);
   } catch (err) {
@@ -28,6 +18,18 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const blogData = await Blog.findOne({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(blogData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.post("/", withAuth, async (req, res) => {
   try {
@@ -41,12 +43,11 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
-
 router.delete("/:id", withAuth, async (req, res) => {
   try {
     const blogData = await Blog.destroy({
       where: {
-        id: req.params.id
+        id: req.params.id,
       },
     });
     if (!blogData) {
@@ -58,7 +59,5 @@ router.delete("/:id", withAuth, async (req, res) => {
     res.status(500).json(error);
   }
 });
-
-
 
 module.exports = router;

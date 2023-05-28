@@ -1,55 +1,22 @@
-const openBlogHandler = async (event) => {
-
-}
-
-
-
 const commentHandler = async (event) => {
-    console.log('comment handler')
     event.preventDefault();
 
-    
 
-    const blog_id = document.querySelector('.blogid').dataset.id;
-    const content = document.querySelector('#comment-content').value;
-    console.log(blog_id)
-    
-    const response = await fetch('/api/comments', {
-        method: "POST",
-        body: JSON.stringify({ content, blog_id }),   
-        headers: { "Content-Type": "application/json" },
-    });
-    if (response.ok) {
-        document.location.reload();
-    } else {
-        alert(response.statusText);
-    }
+const content = document.getElementById("textAreaExample").value
+const blog_id = parseInt(location.pathname.substring(10))
+
+
+
+const response = await fetch('/api/comments', {
+    method: "POST",
+    body: JSON.stringify({ content, blog_id}),   
+    headers: { "Content-Type": "application/json" },
+});
+if (response.ok) {
+    window.location.reload()
+} else {
+    alert(response.statusText);
 }
-// document.getElementById('comment').addEventListener('click', commentHandler);
-// // const btns = document.querySelectorAll('#comment');
-// // Array.from(btns).forEach(function(btn) {
-// //   btn.addEventListener('click', commentHandler);
-// // });
+}
 
-// document.getElementById("comment").addEventListener("click", commentHandler)
-  
-
-  
-
-// document.querySelector(".group-blogs").addEventListener("click", function(e){
-//     const target = e.target; // Or any other selector.
-//     console.log(e.target);
-    
-//     if(target === 'button'){
-//       commentHandler(e);
-//     }
-//   });
-document.querySelector(".group-blogs").addEventListener("click", function(e){
-    const target = e.target; // Or any other selector.
-    // console.log(e.target);
-    
-    if(target.matches('button')){
-        console.log(target);
-      commentHandler(e);
-    }
-  });
+document.getElementById("commentBtn").addEventListener("click",  commentHandler);

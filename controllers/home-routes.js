@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, Blog, Comment } = require("../models");
 const withAuth = require("../utils/withAuth");
+const util = require('util')
 
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
@@ -8,10 +9,14 @@ router.get("/dashboard", withAuth, async (req, res) => {
       where: {
         user_id: req.session.user_id,
       },
+      order: [["date", "DESC"]],
       include: [
         {
           model: User,
           attributes: ["email", "first_name", "last_name"],
+        },
+        {
+          model: Comment,
         },
       ],
     });
@@ -57,14 +62,15 @@ router.get("/signup", async (req, res) => {
 router.get("/homepage", async (req, res) => {
   if (req.session.logged_in) {
     const blogData = await Blog.findAll({
+      order: [["date", "DESC"]],
       include: [
         {
           model: User,
-          attributes: ["first_name", "last_name"],
+          
         },
         {
           model: Comment,
-          attributes: ["content"],
+        
         },
       ],
     });
@@ -93,52 +99,29 @@ router.get("/homepage", async (req, res) => {
   }
 });
 
-router.get("/singleBlog/:id", withAuth, async (req, res) => {
-  console.log(req.params.id);
-  try {
-    const blogData = await Blog.findOne({
+router.get("/homepage/:id", async (req, res) => {
+  
+    try {
+      const blogData = await Blog.findOne({
         where: {
-            id: req.params.id
+          id: req.params.id,
         },
-        attributes: [
-            'id',
-            'title',
-            'content',
-            
-            
-        ],
-        include: [{
-            model: Comment,
-            attributes: [
-                'id',
-                'content',
-                'blog_id',
-                'user_id',
-                
-            ],
-            include: {
-                model: User,
-                attributes: ['first_name', 'last_name']
-            }
-        },
-        {
-            model: User,
-            attributes: ['first_name', 'last_name']
-        }]
-    })
-    
-    const blogs = blogData.get({ plain: true });
-    console.log(blogs);
-    res.render("singleBlog", {
-      user: req.session.user,
-      blogs,
-      logged_in: req.session.logged_in,
-    });
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
+        include: [User, { model: Comment, include: [User] }],
+      });
 
+      const blogs = blogData.get({ plain: true });
+      console.log(util.inspect(blogs, {showHidden: false, depth: 10, colors: true}));
+      res.render("singleblog", {
+        user: req.session.user,
+        blogs,
+        logged_in: req.session.logged_in,
+        is_creator: blogs.user.id === req.session.user_id
+      });
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  
+});
 
 router.get("*", async (req, res) => {
   // const blogData = await Blog.findAll({

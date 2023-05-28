@@ -1,41 +1,27 @@
  {{#each blogs as |blog|}}
-    <a class="m-3" style="text-decoration:none" href="/singleBlog/{{blog.id}}">
-      <div class="container blogid"data-blogid="{{blog.id}}">
-        <div class="row d-flex justify-content-center">
-          <div class="card" >
+    <div class="m-3">
+      <div class="container  shadow-lg blogid"data-blogid="{{blog.id}}">
+        <div class="row d-flex  justify-content-center">
+          <div class="card radius-border " >
             <div class="card-body">
+              
               <div class="d-flex flex-start align-items-center">
                 <div>
-                  <h6
-                    class="fw-bold text-primary mb-1"
-                  >{{blog.user.first_name}}</h6>
                   <p class="text-muted small mb-0">
                     {{blog.date}}
                   </p>
                 </div>
               </div>
-              
               <p class="mt-3 mb-4">
               </p>
               <hr class="hr" />
-              <h5>{{blog.title}}</h5>
-              <div>
-                <p>{{blog.content}}</p>
-              </div>
+              <a href="/homepage/{{blog.id}}"><h5>{{blog.title}}</h5></a>
+             
             </div>
-            <div
-              class="card-footer m-3 rounded border-0"
-            >
-              <h6>Comments</h6>
-               <hr class="hr"/>
-              <div class="d-flex flex-start w-100">
-                <p>{{comment.content}}</p>
-              </div>
-
-            </div>
+         
           </div>
 
         </div>
       </div>
-    </a>
+    </div>
   {{/each}}

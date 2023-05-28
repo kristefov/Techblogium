@@ -1,0 +1,13 @@
+
+.back-color {
+background-color: rgb(157, 156, 156);
+}
+
+.navbar-index {
+    z-index: 1;
+    top: 0px;
+    width: 100vw;
+}
+.radius-border {
+    border-radius: 15px;
+}

@@ -1,4 +1,6 @@
-<a class="m-3" style="text-decoration:none" href="/singleBlog/{{blogs.id}}">
+<section  class="group-blogs m-5 p-5"> 
+<div class="m-3">
+
       <div class="container" >
         <div class="row d-flex justify-content-center">
           <div class="card" >
@@ -11,15 +13,19 @@
                   <p class="text-muted small mb-0">
                     {{blogs.date}}
                   </p>
+                  {{#if is_creator}}
+                  <button id="updateBtn">Update</button>
+                  <button id="deleteBtn">Delete</button>
+                  {{/if}}
                 </div>
               </div>
               
               <p class="mt-3 mb-4">
               </p>
               <hr class="hr" />
-              <h5>{{blogs.title}}</h5>
+              <h5 id="titleUpdate">{{blogs.title}}</h5>
               <div>
-                <p>{{blogs.content}}</p>
+                <p id="blogUpdate">{{blogs.content}}</p>
               </div>
             </div>
             <div
@@ -27,15 +33,47 @@
             >
               <h6>Comments</h6>
                <hr class="hr"/>
-              <div class="d-flex flex-start w-100">
+              <div >
                 {{#each blogs.comments as |comments|}}
+                <p> {{comments.user.first_name}}</p>
                 <p>{{comments.content}}</p>
+                 <hr class="hr" />
+                {{!-- <p>{{comments.createdAt}}</p> --}}
+                
+               
                 {{/each}}
               </div>
-
+              
+          </div>
+          {{#if logged_in}}
+<div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+            <div class="d-flex flex-start w-100">
+              
+              <div class="form-outline w-100">
+                <textarea class="form-control" id="textAreaExample" rows="4"
+                  style="background: #fff;"></textarea>
+                <label class="form-label" for="textAreaExample">Message</label>
+              </div>
             </div>
+            <div class="float-end mt-2 pt-1">
+              <button type="button" id="commentBtn" class="btn btn-primary btn-sm">Post comment</button>
+             
+            </div>
+            </div>
+            {{/if}}
+            
           </div>
 
         </div>
+        
       </div>
-    </a>
+    </div>
+    
+</section>
+{{#if logged_in}}
+ <script src="/comment.js"></script>
+ {{/if}}
+ {{#if is_creator}}
+ <script src="/update.js"></script>
+ {{/if}}
+       
