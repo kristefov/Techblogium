@@ -25,8 +25,8 @@ const updateHandler = async (event) => {
     const saveHandler = async (event) => {
         event.preventDefault();
 
-        const title = document.getElementById('titleUpdate');
-        const content = document.getElementById('contentUpdate');
+        const title = document.getElementById('titleUpdate').value;
+        const content = document.getElementById('contentUpdate').value;
         const response = await fetch('/api/blogs/:id', {
             method: "PUT",
             body: JSON.stringify({ title, content }),   
