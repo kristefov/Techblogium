@@ -11,3 +11,7 @@ background-color: rgb(157, 156, 156);
 .radius-border {
     border-radius: 15px;
 }
+
+.navigationTags{
+    text-decoration: none;
+}

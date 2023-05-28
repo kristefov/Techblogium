@@ -24,9 +24,6 @@ Blog.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    is_complete: {
-      type: DataTypes.BOOLEAN,
-    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

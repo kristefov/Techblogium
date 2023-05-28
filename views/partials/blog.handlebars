@@ -8,14 +8,14 @@
               <div class="d-flex flex-start align-items-center">
                 <div>
                   <p class="text-muted small mb-0">
-                    {{blog.date}}
+                    {{format_date blog.date}}
                   </p>
                 </div>
               </div>
               <p class="mt-3 mb-4">
               </p>
               <hr class="hr" />
-              <a href="/homepage/{{blog.id}}"><h5>{{blog.title}}</h5></a>
+              <a class="navigationTags" href="/homepage/{{blog.id}}"><h5 class="text-center">{{blog.title}}</h5></a>
              
             </div>
          

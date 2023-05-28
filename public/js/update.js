@@ -5,20 +5,17 @@ const updateHandler = async (event) => {
     const currentTitle = document.getElementById('titleUpdate');
     const currentBody = document.getElementById('blogUpdate');
     const titleUpdate = document.createElement("input");
-    const bodyUpdate = document.createElement("textarea");
+    const contentUpdate = document.createElement("textarea");
     const saveButton = document.createElement("button")
     const updateButton = document.getElementById('updateBtn')
     
-    ;
-    
-
     titleUpdate.value = currentTitle.textContent
-    bodyUpdate.value = currentBody.textContent
+    contentUpdate.value = currentBody.textContent
     titleUpdate.setAttribute("id", "titleUpdate")
-    bodyUpdate.setAttribute("id", "bodyUpdate")
+    contentUpdate.setAttribute("id", "contentUpdate")
 
     currentTitle.replaceWith(titleUpdate)
-    currentBody.replaceWith(bodyUpdate)
+    currentBody.replaceWith(contentUpdate)
     updateButton.replaceWith(saveButton)
     saveButton.id = "save"
     saveButton.textContent = "Save"
@@ -27,7 +24,8 @@ const updateHandler = async (event) => {
 
         const title = document.getElementById('titleUpdate').value;
         const content = document.getElementById('contentUpdate').value;
-        const response = await fetch('/api/blogs/:id', {
+        const id = parseInt(location.pathname.substring(10))
+        const response = await fetch(`/api/blogs/${id}`, {
             method: "PUT",
             body: JSON.stringify({ title, content }),   
             headers: { "Content-Type": "application/json" },
