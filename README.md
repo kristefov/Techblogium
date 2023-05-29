@@ -15,15 +15,15 @@
 ## Table of Contents
 
 * [Description](#description)
-* [Table of Contents](#table-of-contents)
+
 * [Installation](#installation)
 * [Usage](#usage)
-* [Walkthrough](#walkthrough)
+* [Walkthrough](#walkthrough-video)
 * [Link](#link)
 * [Authors](#authors)
 * [License](#license)
 #
-#
+
 ## Description
 
 Welcome to Techblogium, the ultimate destination for all tech enthusiasts! Whether you're a gadget aficionado, a tech guru, or simply curious about the latest technological wonders, you've come to the right place. Techblogium is not just a blog; it's a vibrant community where you can dive into the world of technology, read captivating articles, and engage in meaningful discussions.
@@ -66,7 +66,7 @@ In order to use the program you will need to clone the repository from GitHub pr
 For and suggestions or contributions you can reach me at my email address or you can clone to code and edit it the way it will suite you the best.
 #
 ## Walkthrough Video
-#
+
 [<img src="./assets/images/Screenshot.png" width="100%">](https://drive.google.com/file/d/15RBCeoPsACsRICL28xkjZCmyn8rR6hWf/view?usp=sharing)
 #
 
