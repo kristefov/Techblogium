@@ -27,7 +27,7 @@ const seedDatabase = async () => {
         user_id: users[Math.floor(Math.random() * users.length)].id,
         blog_id: users[Math.floor(Math.random() * users.length)].id,
       });
-      console.log(blogData);
+      
     }
     
   process.exit(0);
