@@ -1,3 +1,5 @@
+/* This is a Sequelize model for a User with email, first name, last name, and password attributes,
+including hooks to hash the password before creating or updating the user. */
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
@@ -36,7 +38,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8],
+        len: [5],
       },
     },
   },

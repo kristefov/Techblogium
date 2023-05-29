@@ -1,3 +1,4 @@
+/* This is a Sequelize model for a Comment with properties such as id, content, user_id, and blog_id. */
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 

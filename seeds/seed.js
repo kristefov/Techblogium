@@ -1,3 +1,7 @@
+/* This code is seeding a database with data from JSON files. It requires the Sequelize connection from
+the `../config/connection` file and the User, Blog, and Comment models from the `../models`
+directory. It also imports data from three JSON files: `userData.json`, `blogData.json`, and
+`commentData.json`. */
 const sequelize = require("../config/connection");
 const { User, Blog, Comment } = require("../models");
 

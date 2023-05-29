@@ -1,3 +1,5 @@
+/* The above class defines a Sequelize model for a blog with properties such as title, content, date,
+and user_id. */
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
@@ -12,11 +14,11 @@ Blog.init(
       autoIncrement: true,
     },
     title: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     date: {

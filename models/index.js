@@ -1,3 +1,5 @@
+/* This code is setting up associations between three models: User, Blog, and Comment. It is using the
+Sequelize library to define these associations. */
 const User = require("./User");
 const Blog = require("./Blog");
 const Comment = require("./Comment");

@@ -1,3 +1,10 @@
+/**
+ * This function handles the submission of a comment form by sending a POST request to the server with
+ * the comment content and associated blog ID, and then reloading the page if the request is
+ * successful.
+ * @param event - The event parameter is an object that represents the event that triggered the
+ * function. In this case, it is the click event on the "commentBtn" button.
+ */
 const commentHandler = async (event) => {
     event.preventDefault();
 
