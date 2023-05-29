@@ -1,7 +1,7 @@
 /* This code is importing the `Router` module from the `express` package and creating a new instance of
 it called `router`. It is also importing the `User` model from the `../../models` directory. */
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Comment } = require("../../models");
 
 /* This code is defining a route for handling a POST request to the root URL ("/"). When a POST request
 is made to this route, it creates a new user in the database using the `User.create()` method and

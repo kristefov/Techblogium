@@ -1,6 +1,6 @@
 /* These lines of code are importing the necessary dependencies and middleware for the blog routes. */
 const router = require("express").Router();
-const { Blog } = require("../../models");
+const { Blog , Comment } = require("../../models");
 const withAuth = require("../../utils/withAuth");
 
 /* This code defines a GET route for the root URL ("/") that retrieves all blog posts from the database
