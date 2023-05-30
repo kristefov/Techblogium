@@ -1,6 +1,5 @@
-const User = require("./User");
-const Blog = require("./Blog");
-const Comment = require("./Comment");
+
+const {User, Blog, Comment} = require("../models")
 
 
 User.hasMany(Blog, {
