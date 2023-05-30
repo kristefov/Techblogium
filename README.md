@@ -63,7 +63,7 @@ In order to use the program you will need to clone the repository from GitHub pr
 
 #
 ## How to Contribute
-For and suggestions or contributions you can reach me at my email address or you can clone to code and edit it the way it will suite you the best.
+For and suggestions or contributions you can reach me at my email address or you can clone to code and edit, it the way it will suite you the best.
 #
 ## Walkthrough Video
 
