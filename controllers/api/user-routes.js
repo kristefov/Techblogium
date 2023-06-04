@@ -9,17 +9,21 @@ the data from the request body (`req.body`). If the user is successfully created
 user's ID and sets the `logged_in` property to `true` in the session object. It then sends a JSON
 response with the user data and renders the "homepage" view. If there is an error creating the user,
 it sends a JSON response with the error message and a 400 status code. */
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const userData = await User.create({
+      email: req.body.email,
+      password: req.body.password
+    });
+
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      res.status(200).json(userData);
-      res.render("homepage")
+      req.session.user = userData;
+      res.json({ user: userData, message: "You have been successfully registered" });
     });
-  } catch (error) {
-    res.status(400).json(error);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
@@ -74,21 +78,6 @@ router.post("/logout", (req, res) => {
     res.status(404).end();
   }
 });
-
-/* This code is defining a route for handling a GET request to the root URL ("/"). When a GET request
-is made to this route, it retrieves all user data from the database using the `User.findAll()`
-method and sends a JSON response with the user data and a 200 status code. If there is an error
-retrieving the user data, it sends a JSON response with the error message and a 500 status code. */
-router.get("/", async (req, res) => {
-  try {
-    const userData = await User.findAll();
-    res.status(200).json(userData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-
 
 
 module.exports = router;
