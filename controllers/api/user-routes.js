@@ -11,10 +11,7 @@ response with the user data and renders the "homepage" view. If there is an erro
 it sends a JSON response with the error message and a 400 status code. */
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create({
-      email: req.body.email,
-      password: req.body.password
-    });
+    const userData = await User.create({});
 
     req.session.save(() => {
       req.session.user_id = userData.id;
