@@ -136,7 +136,7 @@ router.get("/homepage/:id", async (req, res) => {
 
       const blogs = blogData.get({ plain: true });
       console.log(util.inspect(blogs, {showHidden: false, depth: 10, colors: true}));
-      res.render("singleblog", {
+      res.render("singleBlog", {
         user: req.session.user,
         blogs,
         logged_in: req.session.logged_in,
