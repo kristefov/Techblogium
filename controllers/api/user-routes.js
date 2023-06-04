@@ -9,7 +9,7 @@ the data from the request body (`req.body`). If the user is successfully created
 user's ID and sets the `logged_in` property to `true` in the session object. It then sends a JSON
 response with the user data and renders the "homepage" view. If there is an error creating the user,
 it sends a JSON response with the error message and a 400 status code. */
-router.post("/", async (req, res) => {
+router.post("/signup", async (req, res) => {
   try {
     const userData = await User.create(req.body);
     req.session.save(() => {
@@ -88,21 +88,5 @@ router.get("/", async (req, res) => {
   }
 });
 
-/* This code is defining a route for handling a POST request to the "/signup" URL. When a POST request
-is made to this route, it creates a new user in the database using the `User.create()` method and
-the data from the request body (`req.body`). If the user is successfully created, it sends a JSON
-response with the user data and a 200 status code. If there is an error creating the user, it sends
-a JSON response with the error message and a 400 status code. This route is used to sign up a new
-user. */
-router.post("/signup", async (req, res) => {
-  try {
-    const newUser = await User.create({
-      ...req.body,
-    });
-    res.status(200).json(newUser);
-  } catch (error) {
-    res.status(400).json(error);
-  }
-})
 
 module.exports = router;
