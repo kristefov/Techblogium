@@ -77,7 +77,7 @@ For and suggestions or contributions you can reach me at my email address or you
 ## Link
 Link to repository:
 
-https://github.com/kristiyantefov/Techblogium
+https://github.com/kristefov/Techblogium
 
 Link to website:
 
@@ -86,7 +86,7 @@ https://techblogium.herokuapp.com
 #
 ## Authors
 
-- [Kristiyan](https://github.com/kristiyantefov)
+- [Kris](https://github.com/kristefov)
 
 #
 ## License
